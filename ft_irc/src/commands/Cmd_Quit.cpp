@@ -29,7 +29,12 @@ cmdQuit:
 extraire le quit message
 si vide, return par defaut "Client quit"
 si non, extrait la sous chaine du message
+broadcast -> parcourt tous les clients connectes et envoie message a chacun
+handleclient -> nettoie la connexion du client qui vient de quitter
+				ferme le socket TCP et le supprime de la liste client
 -
 QUIT:[quit message] -> quit message pas obligatoire
+sortie -> :Nick!User@Host QUIT :Message
+sortie -> :Zanox!alice@127.0.0.1 QUIT :Bye bye!
 =============================================================
 */

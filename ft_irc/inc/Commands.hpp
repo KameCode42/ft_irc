@@ -11,9 +11,7 @@ void	cmdPass(Server& server, Client& client, std::istringstream& iss);
 void	cmdNick(Server& server, Client& client, std::istringstream& iss);
 void	cmdUser(Server& server, Client& client, std::istringstream& iss);
 void	cmdQuit(Server& server, Client& client, std::istringstream& iss);
-//void	cmdPing(Server& server, Client& client, std::istringstream& iss);
-
-
+void	cmdPing(Server& server, Client& client, std::istringstream& iss);
 void	parseCommand(Server& server, Client& client, std::string& message);
 
 #endif
