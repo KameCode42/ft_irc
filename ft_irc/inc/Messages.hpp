@@ -99,4 +99,11 @@ Dans IRSSI --> /rawlog open raw.txt
 << PING ft_irc
 >> : 421 * PING :Unknown command
 =============================================================
+
+=============================================================
+Connection weechat:
+/server add monirc 127.0.0.1/6667 -password=alice -tls=no
+/connect monirc
+/server del monirc = supprimer server
+=============================================================
 */

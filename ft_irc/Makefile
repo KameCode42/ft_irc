@@ -2,9 +2,11 @@ NAME = ircserv
 
 SRCS =	src/main.cpp \
 		src/client/Client.cpp \
+		src/commands/Cmd_Cap.cpp \
 		src/commands/Cmd_Pass.cpp \
 		src/commands/Cmd_Nick.cpp \
 		src/commands/Cmd_User.cpp \
+		src/commands/Cmd_Quit.cpp \
 		src/commands/ParseCommands.cpp \
 		src/server/Server.cpp
 

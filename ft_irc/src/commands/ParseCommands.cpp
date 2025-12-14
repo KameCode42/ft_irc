@@ -14,12 +14,16 @@ void	parseCommand(Server& server, Client& client, std::string& message)
 	for (size_t i = 0; i < command.size(); ++i)
 		command[i] = std::toupper(command[i]);
 
-	if (command == "PASS")
+	if (command == "CAP")
+		cmdCap(server, client, iss);
+	else if (command == "PASS")
 		cmdPass(server, client, iss);
 	else if (command == "NICK")
 		cmdNick(server, client, iss);
 	else if (command == "USER")
 		cmdUser(server, client, iss);
+	else if (command == "QUIT")
+		cmdQuit(server, client, iss);
 	else {
 		server.sendMessageToClient(client.getFd(),
 			ERR_CMDNOTFOUND(SERVER_NAME, client.getNickName(), command));
