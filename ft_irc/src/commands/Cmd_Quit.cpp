@@ -12,7 +12,7 @@ void	cmdQuit(Server& server, Client& client, std::istringstream& iss)
 	if (quitMessage.empty())
 		quitMessage = "Client Quit";
 	else if (quitMessage[0] == ':')
-		quitMessage = quitMessage.substr(1);
+		quitMessage.erase(0, 1);
 
 	std::string fullQuitMsg = RPL_QUITMSG(client.getNickName(), client.getUserName(), client.getHostName(), quitMessage);
 	server.broadcastMessage(fullQuitMsg, client.getFd());
@@ -36,5 +36,8 @@ handleclient -> nettoie la connexion du client qui vient de quitter
 QUIT:[quit message] -> quit message pas obligatoire
 sortie -> :Nick!User@Host QUIT :Message
 sortie -> :Zanox!alice@127.0.0.1 QUIT :Bye bye!
+-
+QUIT :<message>
+QUIT = message par defaut
 =============================================================
 */

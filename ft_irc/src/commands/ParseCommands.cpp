@@ -24,6 +24,10 @@ void	parseCommand(Server& server, Client& client, std::string& message)
 		cmdUser(server, client, iss);
 	else if (command == "QUIT")
 		cmdQuit(server, client, iss);
+	else if (command == "PING")
+		cmdPing(server, client, iss);
+	else if (command == "PONG")
+		;
 	else {
 		server.sendMessageToClient(client.getFd(),
 			ERR_CMDNOTFOUND(SERVER_NAME, client.getNickName(), command));

@@ -24,6 +24,7 @@
 //ERR (Erreurs standard)
 #define ERR_NOSUCHNICK(server, nickname, name)							(std::string(":") + server + " 401 " + nickname + " " + name + " :No such nick/channel" + EOL)
 #define ERR_CHANNELNOTFOUND(server, nickname, channelname)				(std::string(":") + server + " 403 " + nickname + " " + channelname + " :No such channel" + EOL)
+#define ERR_NOORIGIN(server, nickname)									(std::string(":") + server + " 409 " + nickname + " :No origin specified" + EOL)
 #define ERR_CMDNOTFOUND(server, nickname, command)						(std::string(":") + server + " 421 " + nickname + " " + command + " :Unknown command" + EOL)
 #define ERR_NONICKNAMEGIVEN(server, nickname)							(std::string(":") + server + " 431 " + nickname + " :No nickname given" + EOL)
 #define ERR_ERRONEUSNICK(server, nickname)								(std::string(":") + server + " 432 " + nickname + " :Erroneus nickname" + EOL)
@@ -46,7 +47,7 @@
 /*=== Note ===*/
 /*
 =============================================================
-RPL (Replies standard):
+RPL (Replies standard): reponse normale du serveur a une commande valide
 001 -> Message de bienvenue
 324 -> Modes du channel
 329 -> Date de création du channel
@@ -59,9 +60,10 @@ OIN / QUIT (messages d’événement, pas de code numérique)
 =============================================================
 
 =============================================================
-ERR (Erreurs standard):
+ERR (Erreurs standard): reponse d'erreur
 401 -> Aucun nick ou channel trouvé
 403 -> Channel introuvable
+409 -> aucun parametre (ping/pong)
 421 -> Commande inconnue
 431 -> Aucun nickname fourni
 432 -> Nickname invalide
