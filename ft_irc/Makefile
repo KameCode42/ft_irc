@@ -2,6 +2,7 @@ NAME = ircserv
 
 SRCS =	src/main.cpp \
 		src/client/Client.cpp \
+		src/channel/Channel.cpp \
 		src/commands/Cmd_Cap.cpp \
 		src/commands/Cmd_Pass.cpp \
 		src/commands/Cmd_Nick.cpp \
@@ -13,8 +14,9 @@ SRCS =	src/main.cpp \
 
 
 HEADERS =	inc/Client.hpp \
-			inc/Messages.hpp \
 			inc/Commands.hpp \
+			inc/Messages.hpp \
+			inc/Channel.hpp \
 			inc/Server.hpp
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))

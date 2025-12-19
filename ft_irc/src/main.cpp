@@ -34,3 +34,17 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
+/*
+ajouter server et se connecter a weechat
+/server add local 127.0.0.1/6667 -password=alice -tls=no
+/connect local
+
+-
+supprimer server
+/server del local
+-
+
+-tls=no
+pas de connexion securise car notre server n utilise pas (TCP simple)
+pas de TLS (securiser)
+*/

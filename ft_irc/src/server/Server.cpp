@@ -1,6 +1,7 @@
 #include "Server.hpp"
 #include "Client.hpp"
 #include "Commands.hpp"
+#include "Channel.hpp"
 
 // === CONSTRUCTOR & DESTRUCTOR ===
 Server::Server(int port, const std::string& pass) :

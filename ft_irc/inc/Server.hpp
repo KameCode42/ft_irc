@@ -18,6 +18,7 @@
 #include <csignal>
 #include "Client.hpp"
 #include "Messages.hpp"
+#include "Channel.hpp"
 
 #define SERVER_NAME    "ft_irc"
 #define SERVER_VERSION "1.0"
@@ -31,7 +32,7 @@
 #define CYAN    "\033[36m"
 
 class Client;
-//class Channel;
+class Channel;
 
 class Server {
 private:
@@ -46,7 +47,7 @@ private:
 	std::vector<struct pollfd>	_pollfds;
 
 	// Channel
-	//std::map<std::string, Channel> _channels;
+	std::map<std::string, Channel> _channels;
 
 public:
 	Server(int port, const std::string& pass);

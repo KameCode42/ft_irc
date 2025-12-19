@@ -125,7 +125,8 @@ void	Client::setIsRegistered(bool status) {
 
 /*=== Fonction membre ===*/
 
-void	Client::appendToBuffer(std::string const& data) {
+void	Client::appendToBuffer(std::string const& data)
+{
 	if (data.empty())
 		return;
 
@@ -146,7 +147,8 @@ void	Client::appendToBuffer(std::string const& data) {
 		throw std::runtime_error("Error : line too long (RFC 1459 violation)");
 }
 
-bool	Client::hasCompleteCommand()const {
+bool	Client::hasCompleteCommand()const
+{
 	if (_buffer.empty())
 		return false;
 
@@ -156,7 +158,8 @@ bool	Client::hasCompleteCommand()const {
 	return true;
 }
 
-std::string	Client::extractNextCommand() {
+std::string	Client::extractNextCommand()
+{
 	if (!hasCompleteCommand())
 		return "";
 
