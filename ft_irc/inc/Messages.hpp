@@ -15,7 +15,7 @@
 #define RPL_ENDOFNAMES(server, nickname, channelname)					(std::string(":") + server + " 366 " + nickname + " #" + channelname + " :End of /NAMES list" + EOL)
 #define RPL_CHANGEMODE(server, nickname, channelname, mode, arguments)	(std::string(":") + server + " MODE #" + channelname + " " + mode + " " + arguments + EOL)
 #define RPL_NICKCHANGE(oldnickname, nickname)							(std::string(":") + oldnickname + " NICK " + nickname + EOL)
-#define RPL_JOINMSG(hostname, ipaddress, channelname)					(std::string(":") + hostname + "@" + ipaddress + " JOIN #" + channelname + EOL)
+#define RPL_JOINMSG(nickname, username, hostname, channelname)			(std::string(":") + nickname + "!" + username + "@" + hostname + " JOIN #" + channelname + EOL)
 #define RPL_QUITMSG(nickname, user, host, reason)						(std::string(":") + nickname + "!" + user + "@" + host + " QUIT :" + reason + EOL)
 #define RPL_PONG(server, token)											(std::string(":") + server + " PONG :" + token + EOL)
 

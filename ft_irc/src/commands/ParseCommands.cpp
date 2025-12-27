@@ -28,6 +28,8 @@ void	parseCommand(Server& server, Client& client, std::string& message)
 		cmdPing(server, client, iss);
 	else if (command == "PONG")
 		;
+	//else if (command == "JOIN")
+		//cmdJoin(server, client, iss);
 	else {
 		server.sendMessageToClient(client.getFd(),
 			ERR_CMDNOTFOUND(SERVER_NAME, client.getNickName(), command));
