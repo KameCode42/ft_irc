@@ -1,0 +1,59 @@
+PASS wrongpass
+PASS
+
+NICK
+NICK bob   (déjà pris)
+NICK bob!@
+
+USER
+USER bob
+
+JOIN #test   (avant auth)
+PRIVMSG bob :hello  (avant auth)
+
+JOIN
+JOIN test
+JOIN #inexistant
+JOIN #test wrongkey
+
+TOPIC
+TOPIC #unknown
+TOPIC #test :no rights
+
+MODE
+MODE #test
+MODE #test +z
+MODE #test +o alice   (sans être op)
+
+INVITE
+INVITE bob
+INVITE bob #unknown
+INVITE bob #test   (sans être op)
+
+KICK
+KICK #test
+KICK #test bob   (sans être op)
+KICK #unknown bob
+
+PART
+PART
+PART #test,#irc
+PART #unknown
+
+
+Gestion des départs : 
+à la déconnexion (QUIT ou socket coupée) tu dois retirer le client de chaque channel où il est inscrit, 
+y compris opérateurs/invitations, avant d’effacer l’objet côté serveur. Sinon, les vecteurs conservent 
+des pointeurs pendants et les broadcasts peuvent crasher.
+
+Droits opérateurs : KICK (et idéalement les autres commandes réservées) ne vérifie pas que l’émetteur 
+est opérateur du channel. Ajoute channel->isOperator(client) et renvoie ERR_CHANOPRIVSNEEDED si nécessaire.
+
+Diffusion des QUIT : actuellement server.broadcastMessage() envoie le quit à tout le monde. Il faut ne 
+notifier que les clients partageant au moins un channel avec l’utilisateur sortant, comme le font les serveurs IRC standards.
+
+Nettoyage channels vides : après avoir retiré un client, supprime les channels devenus vides 
+(ou réutilise ta logique existante) pour éviter des références mortes.
+
+Tests/référence : rejouer les scénarios de la checklist (auth, JOIN, PRIVMSG, modes, erreurs) 
+avec ton client de référence pour vérifier que les comportements collent au sujet après les correctifs.

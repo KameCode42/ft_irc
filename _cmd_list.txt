@@ -1,0 +1,95 @@
+//COMMANDE TELNET
+
+PASS alefur
+NICK bob
+USER bob 0 * :Bob
+
+PING 12345
+
+JOIN #42
+JOIN #irc
+JOIN #42,#irc
+JOIN #42 key123
+
+TOPIC #42 :Bienvenue
+TOPIC #42
+
+MODE #42 +i				-> sur invitation seulement
+MODE #42 +t				-> Seuls les opérateurs peuvent changer le topic
+MODE #42 +k secret		-> Le channel est protégé par un mot de passe
+MODE #42 -k				-> retirer le passe
+MODE #42 +o bob			-> Donne le statut opérateur à un utilisateur
+MODE #42 -o bob			-> retirer le status d'operateur
+MODE #42 +l	10			-> Limite le nombre de membres (a 10)
+
+INVITE alice #42
+
+KICK #42 alice :Bye -> message a alice a verifier
+KICK #42 alice
+
+PART #42
+PART #42 :À plus
+
+QUIT
+QUIT :Client exiting
+
+
+// IRSSI
+KICK alice #42 
+
+/MSG alice Message
+/MSG #42 Message
+
+
+=============================================================
+Exemple commande:
+[:prefix] COMMAND params :trailing
+Dans IRSSI --> /rawlog open raw.txt
+<< CAP LS
+<< PASS alex
+<< NICK axds
+<< USER axds 0 * :axds
+>> :ft_irc 001 axds :Welcome to the IRC server!
+<< MODE axds +i
+>> : 421 * MODE :Unknown command
+<< PING ft_irc
+>> : 421 * PING :Unknown command
+<< CAP LS
+<< PASS alex
+<< NICK axds
+<< USER axds axds 127.0.0.1 ft_irc:axds
+>> :ft_irc 001 axds :Welcome to the IRC server!
+<< MODE axds +i
+>> : 421 * MODE :Unknown command
+<< PING ft_irc
+>> : 421 * PING :Unknown command
+=============================================================
+
+=============================================================
+Connection weechat:
+/server add monirc 127.0.0.1/6667 -password=alice -tls=no
+/connect monirc
+/server del monirc = supprimer server
+
+========
+
+-tls=no
+pas de connexion securise car notre server n utilise pas (TCP simple)
+pas de TLS (securiser)
+
+=======
+
+weechat
+/invite
+/join
+/kick
+/mode
+/nick
+/part
+/ping
+/pong
+/topic
+/msg -> pour user /msg <user> message
+
+=============================================================
+*/
